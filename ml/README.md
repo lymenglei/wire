@@ -1,40 +1,7 @@
 ## Client-Server
 
+- run Server
+cd export; ./run-server.sh
 
-
-
-
-
-`2018.3.28 16:38`
-
-实现的测试：
-1. 客户端和服务器端的网络通信
-2. Wire Protocol Buffers的序列化反序列化测试
-3. Redis通过jedis实现存储测试
-
-需求：
-> 开启一个server端，然后不同的客户端去连接这个server，当client发送请求，server端能给与特定的回应
-具体细节
-- 存储相关
-    1. 每个用户对应一个名字（暂时不考虑密码）作为key值，位置信息作为value，存储在Redis中
-    2. 数据其实不需要持久化
-- 协议相关
-    1. 注册用户协议
-    2. 同步该用户的坐标
-    3. 请求一个用户的坐标
-    4. 查询在线用户数量
-
-- 结构相关
-    1. 协议应该继承自一个基类，基类中有共有的方法，如 getProtocolName 返回协议的名字，约定一套规则，发送req,返回res之类的规则
-    2. 协议内容应该支持序列化，也就是支持Protocol Buffers，为了方便在协议传输过程中序列化。
-    3. 多设计几个管理类，用于管理连接的session和处理协议的中转类方法。其中session相关包括心跳包等长连接是否连接的检测等。
-    4. 多平台的支持，生成的代码用于java和android端
-
-
-`2018.3.29 11:52`
-根据需求，需要修改protocol buffer的源码，希望gen出来的代码都继承自一个自己写的类，这样就比较容易拓展
-```java
-public class
-```
-
-fileWatchDog 来检测配置文件
+- run Client
+cd export; ./run-client.sh
